@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/menu_1"
+        android:title="@string/quote"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/menu_2"
+        android:title="@string/materials"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/menu_3"
+        android:title="@string/printers"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/menu_4"
+        android:title="@string/general"
+        app:showAsAction="never" />
+</menu>

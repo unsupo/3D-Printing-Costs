@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">3D-printing-costs</string>
+    <string name="quote">Quote</string>
+    <string name="general">General</string>
+    <string name="printers">Printers</string>
+    <string name="materials">Materials</string>
+    <string name="title_goes_here">Title goes here</string>
+    <string name="no_items_press_plus_to_add_some">No Items Press Plus to Add Some</string>
+</resources>

@@ -10,8 +10,11 @@ import com.mikepenz.materialdrawer.model.interfaces.Nameable;
 
 import arndt.com.a3d_printing_costs.MainActivity;
 import arndt.com.a3d_printing_costs.R;
+import arndt.com.a3d_printing_costs.consumables.ConsumablesActivity;
 import arndt.com.a3d_printing_costs.general.GeneralActivity;
 import arndt.com.a3d_printing_costs.materials.MaterialsActivity;
+import arndt.com.a3d_printing_costs.postprocessings.PostProcessingsActivity;
+import arndt.com.a3d_printing_costs.preparations.PreperationsActivity;
 import arndt.com.a3d_printing_costs.printers.PrintersActivity;
 
 public class MenuCreator {
@@ -40,6 +43,15 @@ public class MenuCreator {
                                 break;
                             case R.id.menu_4:
                                 clz = GeneralActivity.class;
+                                break;
+                            case R.id.menu_5:
+                                clz = ConsumablesActivity.class;
+                                break;
+                            case R.id.menu_6:
+                                clz = PostProcessingsActivity.class;
+                                break;
+                            case R.id.menu_7:
+                                clz = PreperationsActivity.class;
                                 break;
                         }
                         if (clz.getName().equals(String.format("%s.%s", context.getPackageName(), context.getLocalClassName())))

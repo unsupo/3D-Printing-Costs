@@ -8,8 +8,11 @@ import androidx.room.Update;
 
 import java.util.List;
 
+import arndt.com.a3d_printing_costs.consumables.ConsumablesObj;
 import arndt.com.a3d_printing_costs.general.GeneralObj;
 import arndt.com.a3d_printing_costs.materials.MaterialObj;
+import arndt.com.a3d_printing_costs.postprocessings.PostProcessingsObj;
+import arndt.com.a3d_printing_costs.preparations.PreparationObj;
 import arndt.com.a3d_printing_costs.printers.PrinterObj;
 
 @Dao
@@ -20,6 +23,12 @@ public interface AppDAO {
     List<MaterialObj> getMaterials();
     @Query("select * from printers")
     List<PrinterObj> getPrinters();
+    @Query("select * from consumables")
+    List<ConsumablesObj> getConsumables();
+    @Query("select * from postprocessings")
+    List<PostProcessingsObj> getPostprocessings();
+    @Query("select * from preparation")
+    List<PreparationObj> getPreparation();
 
     @Delete
     void delete(GeneralObj general);
@@ -27,7 +36,12 @@ public interface AppDAO {
     void delete(MaterialObj materials);
     @Delete
     void delete(PrinterObj printers);
-
+    @Delete
+    void delete(ConsumablesObj general);
+    @Delete
+    void delete(PostProcessingsObj materials);
+    @Delete
+    void delete(PreparationObj printers);
 
     @Insert
     void insertAll(GeneralObj... general);
@@ -35,6 +49,12 @@ public interface AppDAO {
     void insertAll(MaterialObj... materials);
     @Insert
     void insertAll(PrinterObj... printers);
+    @Insert
+    void insertAll(ConsumablesObj... general);
+    @Insert
+    void insertAll(PostProcessingsObj... materials);
+    @Insert
+    void insertAll(PreparationObj... printers);
 
     @Update
     void updateAll(GeneralObj... general);
@@ -42,4 +62,10 @@ public interface AppDAO {
     void updateAll(MaterialObj... materials);
     @Update
     void updateAll(PrinterObj... printers);
+    @Update
+    void updateAll(ConsumablesObj... general);
+    @Update
+    void updateAll(PostProcessingsObj... materials);
+    @Update
+    void updateAll(PreparationObj... printers);
 }

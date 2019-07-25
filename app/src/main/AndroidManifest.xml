@@ -19,6 +19,9 @@
         <activity android:label="@string/app_name" android:name=".general.GeneralActivity"/>
         <activity android:label="@string/app_name" android:name=".materials.MaterialsActivity"/>
         <activity android:label="@string/app_name" android:name=".printers.PrintersActivity"/>
+        <activity android:label="@string/app_name" android:name=".consumables.ConsumablesActivity"/>
+        <activity android:label="@string/app_name" android:name=".postprocessings.PostProcessingsActivity"/>
+        <activity android:label="@string/app_name" android:name=".preparations.PreperationsActivity"/>
     </application>
 
 </manifest>

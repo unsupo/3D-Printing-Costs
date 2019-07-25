@@ -111,7 +111,6 @@ public class PrintersActivity extends AppCompatActivity {
                             DataSingleton.getDAO().updateAll(finalP);
                     });
                     mAdapter.setData(DataSingleton.getPrinterObjs());
-                    mAdapter.notifyDataSetChanged();
                 })
                 .show();
     }

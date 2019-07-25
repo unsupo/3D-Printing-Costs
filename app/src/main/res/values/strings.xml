@@ -6,4 +6,7 @@
     <string name="materials">Materials</string>
     <string name="title_goes_here">Title goes here</string>
     <string name="no_items_press_plus_to_add_some">No Items Press Plus to Add Some</string>
+    <string name="consumables">Consumables</string>
+    <string name="post_processing">Post-Processing</string>
+    <string name="preparation">Preparation</string>
 </resources>

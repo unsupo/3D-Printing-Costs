@@ -8,8 +8,11 @@ import androidx.room.Room;
 import java.util.ArrayList;
 import java.util.List;
 
+import arndt.com.a3d_printing_costs.consumables.ConsumablesObj;
 import arndt.com.a3d_printing_costs.general.GeneralObj;
 import arndt.com.a3d_printing_costs.materials.MaterialObj;
+import arndt.com.a3d_printing_costs.postprocessings.PostProcessingsObj;
+import arndt.com.a3d_printing_costs.preparations.PreparationObj;
 import arndt.com.a3d_printing_costs.printers.PrinterObj;
 
 public class DataSingleton {
@@ -20,6 +23,9 @@ public class DataSingleton {
     private List<GeneralObj> generalObjs = new ArrayList<>();
     private List<MaterialObj> materialObjs = new ArrayList<>();
     private List<PrinterObj> printerObjs = new ArrayList<>();
+    private List<ConsumablesObj> consumablesObjs = new ArrayList<>();
+    private List<PostProcessingsObj> postProcessingsObjs = new ArrayList<>();
+    private List<PreparationObj> preparationObjs = new ArrayList<>();
     private static DataSingleton instance;
     private StringBuilder currency = new StringBuilder("$");
 
@@ -38,6 +44,18 @@ public class DataSingleton {
 
     public static List<MaterialObj> getMaterialObjs() {
         return getInstance().materialObjs;
+    }
+
+    public static List<ConsumablesObj> getConsumablesObjs() {
+        return getInstance().consumablesObjs;
+    }
+
+    public static List<PostProcessingsObj> getPostProcessingsObjs() {
+        return getInstance().postProcessingsObjs;
+    }
+
+    public static List<PreparationObj> getPreparationObjs() {
+        return getInstance().preparationObjs;
     }
 
     public static List<PrinterObj> getPrinterObjs() {
@@ -104,9 +122,15 @@ public class DataSingleton {
             this.generalObjs.clear();
             this.materialObjs.clear();
             this.printerObjs.clear();
+            this.consumablesObjs.clear();
+            this.postProcessingsObjs.clear();
+            this.preparationObjs.clear();
             this.generalObjs.addAll(db.schedulerDAO().getGeneral());
             this.materialObjs.addAll(db.schedulerDAO().getMaterials());
             this.printerObjs.addAll(db.schedulerDAO().getPrinters());
+            this.consumablesObjs.addAll(db.schedulerDAO().getConsumables());
+            this.postProcessingsObjs.addAll(db.schedulerDAO().getPostprocessings());
+            this.preparationObjs.addAll(db.schedulerDAO().getPreparation());
 
             // Default settings
             if(this.generalObjs.isEmpty()){
@@ -120,6 +144,7 @@ public class DataSingleton {
                 gos.add(new GeneralObj("Energy Cost","0.26","€/kWh".replace("€",getCurrency())));
                 gos.add(new GeneralObj("Labor Costs","30","€/h".replace("€",getCurrency())));
                 gos.add(new GeneralObj("Failure rate","10","%"));
+                gos.add(new GeneralObj("Markup","10","%"));
                 gos.add(new GeneralObj(MONEY_UNIT,getCurrency(),""));
                 this.generalObjs.addAll(gos);
                 db.schedulerDAO().insertAll(gos.toArray(new GeneralObj[gos.size()]));

@@ -17,4 +17,16 @@
         android:id="@+id/menu_4"
         android:title="@string/general"
         app:showAsAction="never" />
+    <item
+        android:id="@+id/menu_5"
+        android:title="@string/consumables"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/menu_6"
+        android:title="@string/post_processing"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/menu_7"
+        android:title="@string/preparation"
+        app:showAsAction="never" />
 </menu>

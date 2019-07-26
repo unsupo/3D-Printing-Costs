@@ -1,4 +1,4 @@
-![Image of Yaktocat](https://octodex.github.com/images/yaktocat.png)
+![Feature Graphic](https://github.com/unsupo/3D-Printing-Costs/blob/master/app-images/3D%20Printer-feature-graphic.png)
 # 3D-Printing-Costs
 
 ## TODO

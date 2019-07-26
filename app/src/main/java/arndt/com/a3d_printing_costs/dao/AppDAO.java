@@ -8,6 +8,7 @@ import androidx.room.Update;
 
 import java.util.List;
 
+import arndt.com.a3d_printing_costs.MainObj;
 import arndt.com.a3d_printing_costs.consumables.ConsumablesObj;
 import arndt.com.a3d_printing_costs.general.GeneralObj;
 import arndt.com.a3d_printing_costs.materials.MaterialObj;
@@ -29,6 +30,8 @@ public interface AppDAO {
     List<PostProcessingsObj> getPostprocessings();
     @Query("select * from preparation")
     List<PreparationObj> getPreparation();
+    @Query("select * from main")
+    List<MainObj> getMain();
 
     @Delete
     void delete(GeneralObj general);
@@ -42,6 +45,8 @@ public interface AppDAO {
     void delete(PostProcessingsObj materials);
     @Delete
     void delete(PreparationObj printers);
+    @Delete
+    void delete(MainObj printers);
 
     @Insert
     void insertAll(GeneralObj... general);
@@ -55,6 +60,8 @@ public interface AppDAO {
     void insertAll(PostProcessingsObj... materials);
     @Insert
     void insertAll(PreparationObj... printers);
+    @Insert
+    void insertAll(MainObj... printers);
 
     @Update
     void updateAll(GeneralObj... general);
@@ -68,4 +75,7 @@ public interface AppDAO {
     void updateAll(PostProcessingsObj... materials);
     @Update
     void updateAll(PreparationObj... printers);
+    @Update
+    void updateAll(MainObj... printers);
+
 }

@@ -50,6 +50,7 @@ public class MaterialObj implements DataModel {
         this.bedTemp = bedTemp;
         this.lengthPerRoll = lengthPerRoll;
         this.price = price;
+        setUpBindings();
     }
 
     private void setUpBindings() {

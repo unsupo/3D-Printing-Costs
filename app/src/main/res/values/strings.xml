@@ -9,4 +9,19 @@
     <string name="consumables">Consumables</string>
     <string name="post_processing">Post-Processing</string>
     <string name="preparation">Preparation</string>
+    <string name="summary">Summary</string>
+    <string name="select_filament">Select Filament</string>
+    <string name="filament_weight">filament weight</string>
+    <string name="printing_time">printing time</string>
+    <string name="suggested_price">Suggested Price</string>
+    <string name="no_fillament_add_one">No Fillament Add One</string>
+    <string name="preparation_costs">Preparation Costs</string>
+    <string name="post_processing_costs">Post-Processing Costs</string>
+    <string name="consumables_costs">Consumables Costs</string>
+    <string name="select_printer">Select Printer</string>
+    <string name="no_printers_add_one">No Printers Add One</string>
+    <string name="weight_g">Weight (g)</string>
+    <string name="filament_cost">Filament Cost</string>
+    <string name="electricity_cost">Electricity Cost</string>
+    <string name="printer_depreciation">Printer Depreciation</string>
 </resources>

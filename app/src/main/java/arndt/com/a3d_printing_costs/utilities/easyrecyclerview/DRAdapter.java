@@ -14,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.widget.LinearLayoutCompat;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -135,7 +136,7 @@ public class DRAdapter<T extends DataModel> extends RecyclerView.Adapter<DRViewH
             if(!dm.getBindings().containsKey(cobj))
                 continue; //this id will not get bound
             if(dm.getBindings().get(cobj) == null) {
-                ((FrameLayout)view.getParent().getParent()).setVisibility(View.GONE);
+                ((LinearLayoutCompat)view.getParent()).setVisibility(View.GONE);
                 continue;
             }if(view instanceof SwitchMaterial)
                 ((SwitchMaterial)view).setChecked(((Mutable<Boolean>)dm.getBindings().get(cobj)).getB());

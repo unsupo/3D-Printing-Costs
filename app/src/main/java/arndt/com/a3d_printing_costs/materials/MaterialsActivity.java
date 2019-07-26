@@ -101,7 +101,7 @@ public class MaterialsActivity extends AppCompatActivity {
                         }else
                             DataSingleton.getDAO().updateAll(finalP);
                     });
-                    mAdapter.setData(DataSingleton.getPrinterObjs());
+                    mAdapter.setData(DataSingleton.getMaterialObjs());
                     mAdapter.notifyDataSetChanged();
                 })
                 .show();

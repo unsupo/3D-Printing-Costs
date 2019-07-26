@@ -1,21 +1,203 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".MainActivity"
     tools:openDrawer="start">
 
-    <include layout="@layout/titlebar" />
-
-    <TextView
-        android:layout_width="wrap_content"
+    <include
+        android:id="@+id/titlebar"
+        layout="@layout/titlebar"
+        android:layout_width="411dp"
+        android:layout_height="54dp" />
+    <ScrollView
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/titlebar">
 
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                app:cardCornerRadius="5dp"
+                app:cardElevation="5dp">
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        style="@style/TextAppearance.MaterialComponents.Headline4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="top|start"
+                        android:gravity="center"
+                        android:text="@string/summary" />
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner
+                            android:id="@+id/spinnerFillament"
+                            android:layout_width="0dip"
+                            android:layout_weight="0.5"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:hint="@string/materials"
+                            android:textColorHint="#CFD8DC"
+                            app:met_floatingLabel="normal" />
+                        <TextView
+                            style="@style/TextAppearance.MaterialComponents.Headline6"
+                            android:layout_margin="10dp"
+                            android:id="@+id/empty_viewFillament"
+                            android:layout_width="0dip"
+                            android:layout_weight="0.5"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:visibility="gone"
+                            android:text="@string/no_fillament_add_one" />
+
+                        <com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner
+                            android:id="@+id/spinnerPrinter"
+                            android:layout_width="0dip"
+                            android:layout_weight="0.5"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:hint="@string/printers"
+                            android:textColorHint="#CFD8DC"
+                            app:met_floatingLabel="normal" />
+                        <TextView
+                            style="@style/TextAppearance.MaterialComponents.Headline6"
+                            android:layout_margin="10dp"
+                            android:id="@+id/empty_viewPrinter"
+                            android:layout_width="0dip"
+                            android:layout_weight="0.5"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:visibility="gone"
+                            android:text="@string/no_printers_add_one" />
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <androidx.appcompat.widget.LinearLayoutCompat
+                            android:layout_width="0dip"
+                            android:layout_weight="0.5"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+                            <TextView
+                                android:gravity="center"
+                                android:text="Print Time\nHH:MM"
+                                android:layout_width="match_parent"
+                                android:layout_height="35dp" />
+                            <TimePicker
+                                android:layout_width="match_parent"
+                                android:scaleX="0.8"
+                                android:scaleY="0.8"
+                                android:id="@+id/datePicker1"
+                                android:layout_height="wrap_content"
+                                android:timePickerMode="spinner"/>
+                        </androidx.appcompat.widget.LinearLayoutCompat>
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/textinputlayout0"
+                            android:layout_width="150dp"
+                            android:layout_gravity="center"
+                            android:layout_height="wrap_content">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/title0"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:inputType="numberDecimal"
+                                android:hint="@string/weight_g"
+                                android:maxLines="1" />
+                        </com.google.android.material.textfield.TextInputLayout>
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                    <include
+                        android:id="@+id/filament_cost"
+                        layout="@layout/sub_list_item"
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:gravity="center"
+                        android:text="@string/filament_cost" />
+
+                    <include
+                        android:id="@+id/electricity_cost"
+                        layout="@layout/sub_list_item"
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:gravity="center"
+                        android:text="@string/electricity_cost" />
+
+                    <include
+                        android:id="@+id/printer_depreciation"
+                        layout="@layout/sub_list_item"
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:gravity="center"
+                        android:text="@string/printer_depreciation" />
+
+                    <include
+                        android:id="@+id/preparation_costs"
+                        layout="@layout/sub_list_item"
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:gravity="center"
+                        android:text="@string/preparation_costs" />
+
+                    <include
+                        android:id="@+id/post_processing_costs"
+                        layout="@layout/sub_list_item"
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:gravity="center"
+                        android:text="@string/post_processing_costs" />
+
+                    <include
+                        android:id="@+id/consumables_costs"
+                        layout="@layout/sub_list_item"
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:gravity="center"
+                        android:text="@string/consumables_costs" />
+
+                    <include
+                        android:id="@+id/suggested_price"
+                        layout="@layout/sub_list_item"
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:gravity="center"
+                        android:text="@string/suggested_price" />
+                </androidx.appcompat.widget.LinearLayoutCompat>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                app:cardCornerRadius="5dp"
+                app:cardElevation="5dp">
+
+                <com.github.mikephil.charting.charts.PieChart
+                    android:id="@+id/piechart"
+                    android:layout_width="match_parent"
+                    android:layout_height="400dp" />
+            </com.google.android.material.card.MaterialCardView>
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="50dp"></androidx.appcompat.widget.LinearLayoutCompat>
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

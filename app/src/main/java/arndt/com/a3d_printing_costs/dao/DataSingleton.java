@@ -55,10 +55,10 @@ public class DataSingleton {
     public static List<ConsumablesObj> getConsumablesObjs() {
         return getInstance().consumablesObjs;
     }
-    public static MainObj getMainObj(String key){
+    public static String getMainObj(String key){
         for(MainObj mainObj : instance.main)
             if(mainObj.key.toString().equals(key))
-                return mainObj;
+                return mainObj.value.toString();
         return null;
     }
 
@@ -123,6 +123,21 @@ public class DataSingleton {
             if(o.key.toString().equals(key))
                 return o.value.toString();
         return null;
+    }
+
+    public static void addMain(MainObj... mainObjs) {
+        for(MainObj mainObj : mainObjs)
+            if(getMainObj(mainObj.key.toString()) == null) {
+                AsyncTask.execute(() -> getDAO().insertAll(mainObj));
+                instance.main.add(mainObj);
+            }else {
+                AsyncTask.execute(() -> getDAO().updateAll(mainObj));
+                for(MainObj m : instance.main)
+                    if(m.key.toString().equals(mainObj.key.toString())){
+                        m.setValue(mainObj.getValue());
+                        break;
+                    }
+            }
     }
 
     private void _setCurrency(String v) {

@@ -68,26 +68,15 @@ public class MainActivity extends AppCompatActivity {
             result.setSelection(R.id.menu_1);
         materialBetterSpinnerF = findViewById(R.id.spinnerFillament);
         materialBetterSpinnerP = findViewById(R.id.spinnerPrinter);
-        setup();
         tpHourMin = findViewById(R.id.datePicker1);
         tpHourMin.setIs24HourView(true);
-        tpHourMin.setHour(0);
-        tpHourMin.setMinute(0);
         tpHourMin.setOnTimeChangedListener((timePicker, i, i1) -> {
             entries.clear();
-            if(DataSingleton.getMainObj(TIME_HR) == null)
-                AsyncTask.execute(() -> DataSingleton.getDAO().insertAll(new MainObj(TIME_HR,tpHourMin.getHour()+"")));
-            else
-                AsyncTask.execute(() -> DataSingleton.getDAO().updateAll(new MainObj(TIME_HR,tpHourMin.getHour()+"")));
-            if(DataSingleton.getMainObj(TIME_MN) == null)
-                AsyncTask.execute(() -> DataSingleton.getDAO().insertAll(new MainObj(TIME_MN,tpHourMin.getMinute()+"")));
-            else
-                AsyncTask.execute(() -> DataSingleton.getDAO().updateAll(new MainObj(TIME_MN,tpHourMin.getMinute()+"")));
+            DataSingleton.addMain(new MainObj(TIME_HR,timePicker.getHour()+""),
+                    new MainObj(TIME_MN,timePicker.getMinute()+""));
             setUpFields();
             setUpChart();
         });
-        if(DataSingleton.getGeneral(WEIGHT)!=null)
-            ((TextInputEditText)findViewById(R.id.title0)).setText(DataSingleton.getGeneral(WEIGHT)+"");
 
         ((TextInputEditText)findViewById(R.id.title0)).addTextChangedListener(new TextWatcher() {
             @Override
@@ -95,11 +84,11 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                weight = Double.parseDouble(charSequence.toString());
-                if(DataSingleton.getMainObj(WEIGHT) == null)
-                    AsyncTask.execute(() -> DataSingleton.getDAO().insertAll(new MainObj(WEIGHT,weight+"")));
+                if(charSequence.toString().isEmpty())
+                    weight = 0;
                 else
-                    AsyncTask.execute(() -> DataSingleton.getDAO().updateAll(new MainObj(WEIGHT,weight+"")));
+                    weight = Double.parseDouble(charSequence.toString());
+                DataSingleton.addMain(new MainObj(WEIGHT,weight+""));
                 entries.clear();
                 setUpFields();
                 setUpChart();
@@ -108,6 +97,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable editable) {}
         });
+        setup();
     }
 
     @RequiresApi(api = Build.VERSION_CODES.M)
@@ -120,9 +110,24 @@ public class MainActivity extends AppCompatActivity {
     @RequiresApi(api = Build.VERSION_CODES.M)
     private void setup() {
         entries.clear();
+        setUpValues();
         setUpSpinner();
         setUpFields();
         setUpChart();
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.M)
+    private void setUpValues() {
+        if(DataSingleton.getMainObj(WEIGHT)!=null)
+            ((TextInputEditText)findViewById(R.id.title0)).setText(DataSingleton.getMainObj(WEIGHT)+"");
+        if(DataSingleton.getMainObj(TIME_HR)!=null)
+            tpHourMin.setHour(Integer.parseInt(DataSingleton.getMainObj(TIME_HR)));
+        else
+            tpHourMin.setHour(0);
+        if(DataSingleton.getMainObj(TIME_MN)!=null) {
+            tpHourMin.setMinute(Integer.parseInt(DataSingleton.getMainObj(TIME_MN)));
+        } else
+            tpHourMin.setMinute(0);
     }
 
     private void setUpChart() {

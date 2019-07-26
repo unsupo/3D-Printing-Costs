@@ -16,7 +16,7 @@ import arndt.com.a3d_printing_costs.printers.PrinterObj;
         GeneralObj.class, MaterialObj.class, PrinterObj.class,
         ConsumablesObj.class, PreparationObj.class, PostProcessingsObj.class,
         MainObj.class
-}, version = 8, exportSchema = false)
+}, version = 9, exportSchema = false)
 @TypeConverters({DataTypeConverter.class})
 public abstract class AppDatabase extends RoomDatabase {
     public abstract AppDAO schedulerDAO();

@@ -1,15 +1,17 @@
 package arndt.com.a3d_printing_costs;
 
+import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
 @Entity(tableName = "main")
 public class MainObj {
-    @PrimaryKey(autoGenerate = true)
-    public int id;
+    @NonNull
+    @PrimaryKey
+    public StringBuilder key = new StringBuilder();
     @ColumnInfo
-    public StringBuilder key = new StringBuilder(), value = new StringBuilder();
+    public StringBuilder value = new StringBuilder();
 
     public MainObj(StringBuilder key, StringBuilder value) {
         this.key = key;
@@ -33,8 +35,8 @@ public class MainObj {
         return value.toString();
     }
 
-    public void setValue(StringBuilder value) {
+    public void setValue(String value) {
         this.value.setLength(0);
-        this.value.append(key);
+        this.value.append(value);
     }
 }
